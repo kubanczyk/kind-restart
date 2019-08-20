@@ -29,6 +29,8 @@ sudo cp -p "$(go env GOPATH)/bin/kind" /usr/local/bin/kind
 ```bash
 ./kind-restart.sh
 export KUBECONFIG=~/.kube/kind
+source <(kubectl completion bash)
+source <(helm    completion bash)
 ```
 
 # Can I run it at system startup?

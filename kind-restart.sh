@@ -18,6 +18,8 @@ echo -------------------------------------
 echo --- Now you can try:              ---
 echo 
 echo export KUBECONFIG=~/.kube/kind
+echo source '<(kubectl completion bash)'
+echo source '<(helm    completion bash)'
 echo
 echo helm search nginx
 echo helm install mymariadb stable/mariadb

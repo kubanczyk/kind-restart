@@ -37,3 +37,8 @@ source <(helm    completion bash)
 
 Yes. Run the script as root. Just make sure that root account has `sudo` access.
 
+# Cleanup
+
+```bash
+sudo -H kind delete cluster
+```

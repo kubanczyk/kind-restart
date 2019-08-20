@@ -1,11 +1,11 @@
 # Kind Restart
 
-Bring up the local dev system (laptop):
-  - Helm 3 (so, no tiller)
+This guide will bring up the local dev system (laptop):
+  - Helm 3 (hence no tiller, yay)
   - Kubernetes on a docker with kind (3 nodes on 1 system)
 
 Unfortunately kind clusters don't survive docker daemon restarts. Hence
-this script to destroy the current cluster and set up a new one.
+this script will destroy the current cluster and set up a new one.
 
 # Requirements
 
@@ -22,7 +22,7 @@ GO111MODULE="on"    go get sigs.k8s.io/kind@v0.4.0
 sudo cp -p "$(go env GOPATH)/bin/kind" /usr/local/bin/kind
 ```
 
-(The source is an official kind website as of 2019-08.)
+(The source is the official kind website as of 2019-08.)
 
 # Usage
 

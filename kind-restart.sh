@@ -31,8 +31,8 @@ kubectl apply -f - <<- EOF
 EOF
 
 echo ----------- helm --------------------
-curl https://get.helm.sh/helm-v3.0.0-alpha.2-linux-amd64.tar.gz | tar zvxf - linux-amd64/helm
-#curl https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
+curl https://get.helm.sh/helm-v3.0.0-rc.3-linux-amd64.tar.gz | tar zvxf - linux-amd64/helm
+#curl https://get.helm.sh/helm-v2.16.0-linux-amd64.tar.gz
 sudo mv linux-amd64/helm /usr/local/bin/helm
 rmdir linux-amd64/
 helm init

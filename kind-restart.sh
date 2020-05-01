@@ -1,19 +1,24 @@
 #!/bin/bash
 
 cd "$(dirname $0)"
+
+echo ----------- kind -----------------
+
 go install sigs.k8s.io/kind
 # Version is pinned inside go.mod file; to bump it:
 #     go get -u sigs.k8s.io/kind
 
 sudo cp -p "$(go env GOPATH)/bin/kind" /usr/local/bin/kind
 
-sudo -H kind delete cluster # FIXME 2> /dev/null
+sudo -H kind delete cluster 2> /dev/null
 sudo -H kind create cluster --config ./kind.yaml
 
 mkdir -p ~/.kube
 sudo -H kind get kubeconfig --name="kind" > ~/.kube/kind
 export KUBECONFIG=~/.kube/kind
 kubectl cluster-info
+
+echo ""
 echo ""
 echo ----------- metallb -----------------
 kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.8.1/manifests/metallb.yaml
@@ -37,7 +42,10 @@ kubectl apply -f - <<- EOF
 	      - $SUBNET     # previously calculated value
 EOF
 
+echo ""
+echo ""
 echo ----------- helm --------------------
+
 curl https://get.helm.sh/helm-v3.0.0-rc.3-linux-amd64.tar.gz | tar zvxf - linux-amd64/helm
 #curl https://get.helm.sh/helm-v2.16.0-linux-amd64.tar.gz
 sudo mv linux-amd64/helm /usr/local/bin/helm
@@ -45,8 +53,10 @@ rmdir linux-amd64/
 helm init
 helm repo update
 
+echo ""
+echo ""
 echo -------------------------------------
-echo --- Now you can try:              ---
+echo --- Commands to try now:          ---
 echo 
 echo export KUBECONFIG=~/.kube/kind
 echo 'source <(kubectl completion bash)'

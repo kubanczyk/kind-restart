@@ -1,6 +1,13 @@
 #!/bin/bash
 
-sudo -H kind delete cluster 2> /dev/null
+cd "$(dirname $0)"
+go install sigs.k8s.io/kind
+# Version is pinned inside go.mod file; to bump it:
+#     go get -u sigs.k8s.io/kind
+
+sudo cp -p "$(go env GOPATH)/bin/kind" /usr/local/bin/kind
+
+sudo -H kind delete cluster # FIXME 2> /dev/null
 sudo -H kind create cluster --config ./kind.yaml
 
 mkdir -p ~/.kube

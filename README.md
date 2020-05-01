@@ -33,11 +33,7 @@ sudo snap install --classic docker
 sudo snap install --classic kubectl
 sudo snap install --classic go
 sudo snap install jq
-GO111MODULE="on"    go get sigs.k8s.io/kind@v0.4.0
-sudo cp -p "$(go env GOPATH)/bin/kind" /usr/local/bin/kind
 ```
-
-(Source: the official kind website as of 2019-08.)
 
 # Usage
 
